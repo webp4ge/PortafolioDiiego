@@ -311,6 +311,13 @@ a:focus {
   background-image: url(../images/next-blue.png);
 }
 
+.about_section {
+  background-image: url("../images/fondo.png");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
 .about_section .box {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -399,6 +406,7 @@ a:focus {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  
 }
 
 .portfolio_section .portfolio_container {

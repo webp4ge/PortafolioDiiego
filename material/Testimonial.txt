@@ -1,0 +1,58 @@
+<div class="layout_padding2-top">
+        <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="btn_container">
+                <a class="carousel-control-prev" href="#carouselExample2Controls" role="button" data-slide="prev">
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExample2Controls" role="button" data-slide="next">
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-9 col-lg-8">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="detail-box">
+                    <h4>
+                      Aloz den
+                    </h4>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore
+                      et
+                      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item ">
+                  <div class="detail-box">
+                    <h4>
+                      Aloz den
+                    </h4>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore
+                      et
+                      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item ">
+                  <div class="detail-box">
+                    <h4>
+                      Aloz den
+                    </h4>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore
+                      et
+                      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum
+                    </p>

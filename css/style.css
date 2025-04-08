@@ -70,9 +70,8 @@ body {
 /*header section*/
 .hero_area {
   height: 136vh;
-  position: relative;
   background-image: url(../images/hero-bg.png);
-  background-size: cover;
+  /* Ensures the background image covers the entire container */
 }
 
 .sub_page .hero_area {
@@ -97,7 +96,7 @@ body {
 .custom_nav-container .navbar-nav .nav-item .nav-link {
   margin: 10px 30px;
   padding: 0;
-  color: #0fcfdc;
+  color: #51004f;
   text-align: center;
   position: relative;
   text-transform: uppercase;
@@ -112,7 +111,7 @@ body {
   left: -10px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  background-color: #0fcfdc;
+  background-color: #000000;
   border-radius: 100%;
 }
 
@@ -170,7 +169,7 @@ a:focus {
 .navbar-brand span {
   font-size: 20px;
   font-weight: 700;
-  color: #0fcfdc;
+  color: #51004f;
   text-transform: uppercase;
 }
 
@@ -243,26 +242,26 @@ a:focus {
 .slider_section .detail_box .btn-box .btn-1 {
   display: inline-block;
   padding: 7px 0px;
-  background-color: #0fcfdc;
+  background-color: #51004f;
   color: #ffffff;
   border-radius: 30px;
   margin-right: 5px;
 }
 
 .slider_section .detail_box .btn-box .btn-1:hover {
-  background-color: #0db9c4;
+  background-color: #51004f;
 }
 
 .slider_section .detail_box .btn-box .btn-2 {
   display: inline-block;
   padding: 7px 0px;
-  background-color: #000000;
+  background-color: #51004f;
   color: #ffffff;
   border-radius: 30px;
 }
 
 .slider_section .detail_box .btn-box .btn-2:hover {
-  background-color: #333333;
+  background-color: #51004f;
 }
 
 .slider_section .img-box img {
@@ -384,7 +383,7 @@ a:focus {
 .about_section .box .detail-box a {
   display: inline-block;
   padding: 12px 60px;
-  background-color: #000000;
+  background-color: #51004f;
   color: #ffffff;
   border-radius: 40px;
   text-transform: uppercase;
@@ -392,11 +391,14 @@ a:focus {
 }
 
 .about_section .box .detail-box a:hover {
-  background-color: #333333;
+  background-color: #51004f;
 }
 
 .portfolio_section {
-  background-color: #f8ffff;
+  background-image: url("../images/fondo.png");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }
 
 .portfolio_section .portfolio_container {
@@ -455,7 +457,7 @@ a:focus {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(15, 207, 220, 0.8);
+  background-color: rgba(232, 180, 252, 0.11);
   z-index: 0;
 }
 
@@ -514,7 +516,7 @@ a:focus {
 .portfolio_section .see_btn a {
   display: inline-block;
   padding: 12px 60px;
-  background-color: #000000;
+  background-color: #51004f;
   color: #ffffff;
   border-radius: 40px;
   text-transform: uppercase;
@@ -553,7 +555,7 @@ a:focus {
   text-align: center;
   margin: 45px 20px 0 20px;
   padding: 45px 35px 15px 35px;
-  border: 1px solid #0fcfdc;
+  border: 1px solid #51004f;
 }
 
 .achieve_section .achieve_container .box .img-box {
@@ -616,7 +618,7 @@ a:focus {
   background-repeat: no-repeat;
   background-size: 15px;
   background-position: center;
-  background-color: #0fcfdc;
+  background-color: #51004f;
   margin: 0 5px;
 }
 
@@ -635,7 +637,7 @@ a:focus {
 
 .client_section .detail-box {
   padding: 20px;
-  border: 1px solid #0fcfdc;
+  border: 1px solid #51004f;
   margin: 0 25px;
 }
 
@@ -650,6 +652,7 @@ a:focus {
   background-position: left bottom;
   padding-bottom: 250px;
   position: relative;
+  background-attachment: fixed;
 }
 
 .contact_section .bg-img1 {
@@ -711,7 +714,7 @@ a:focus {
 .contact_section .contact_form-container button {
   display: inline-block;
   padding: 12px 50px;
-  background-color: #0fcfdc;
+  background-color: #df84ff;
   color: #ffffff;
   border-radius: 0;
   margin-top: 35px;
@@ -719,12 +722,12 @@ a:focus {
 }
 
 .contact_section .contact_form-container button:hover {
-  background-color: #0db9c4;
+  background-color: #df84ff;
 }
 
 /* end contact section */
 .info_section {
-  background-color: #211d25;
+  background-color: #2b062a;
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
 }
@@ -769,7 +772,7 @@ a:focus {
 
 /* footer section*/
 .footer_section {
-  background-color: #211d25;
+  background-color: #160116;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

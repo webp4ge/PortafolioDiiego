@@ -893,4 +893,25 @@ a:focus {
 .popup.hide .popup-content {
   animation: zoomOut 0.5s ease forwards; /* Cambiado de 0.3s a 0.5s */
 }
+
+/* Responsive adjustments for the popup */
+@media (max-width: 768px) {
+  .popup-content {
+    width: 90%; /* Reduce width for smaller screens */
+    max-width: 400px; /* Limit the maximum width */
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-content {
+    width: 95%; /* Further reduce width for very small screens */
+    max-width: 300px; /* Limit the maximum width */
+  }
+
+  .close-popup {
+    width: 30px; /* Adjust close button size */
+    height: 30px;
+    font-size: 20px; /* Adjust font size */
+  }
+}
 /*# sourceMappingURL=style.css.map */

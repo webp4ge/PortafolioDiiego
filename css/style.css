@@ -802,4 +802,95 @@ a:focus {
 .footer_section a {
   color: #ffffff;
 }
+
+/* Pop-up Styles */
+.popup {
+  position: fixed;
+  top: 0; /* Align to the top */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align content to the top */
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+  padding-top: 50px; /* Add some spacing from the top */
+}
+
+.popup-content {
+  position: relative;
+  width: 50%; /* Slightly larger width */
+  max-width: 600px; /* Increased maximum width */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 150px #d3c3c34d; /* Adds a shadow to the popup */
+}
+
+.popup-content img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #51004f; /* Cloud color */
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Makes it look like a cloud */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0px 10px #b106ae, 0 0 20px #e605e2; /* Adds a subtle shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.close-popup:hover {
+  background: #e6059b; /* Fondo rojo más oscuro al pasar el mouse */
+  transform: scale(1.1); /* Slightly enlarges on hover */
+  box-shadow: 0 0px 15px rgba(255, 26, 26, 0.7); /* Increases shadow on hover */
+}
+
+.popup.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Animations for zoom in and zoom out */
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+/* Apply animations to the popup-content */
+.popup.show .popup-content {
+  animation: zoomIn 0.3s ease forwards;
+}
+
+.popup.hide .popup-content {
+  animation: zoomOut 0.5s ease forwards; /* Cambiado de 0.3s a 0.5s */
+}
 /*# sourceMappingURL=style.css.map */

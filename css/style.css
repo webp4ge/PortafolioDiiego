@@ -11,6 +11,7 @@ header {
   padding: 1px 40px;
   font-weight: bold;
   font-size: 15px;
+  background-color: #ffffff; /* Cambia este color al que desees */
 }
 
 .layout_padding {
@@ -55,6 +56,15 @@ header {
   position: relative;
   font-weight: bold;
   text-transform: uppercase;
+  font-size: 36px;
+  color: #2b1e18;
+  margin-bottom: 10px;
+}
+
+.heading_container p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
 }
 
 .heading_container h2 span {
@@ -274,7 +284,10 @@ a:focus {
 }
 
 .slider_section .img-box img {
-  width: 100%;
+  width: 100%; /* La imagen ocupará el 100% del ancho del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+  object-fit: contain; /* Asegura que la imagen se ajuste al contenedor */
+  max-height: 100vh; /* Limita la altura máxima al 100% del viewport */
 }
 
 .slider_section .carousel_btn-container {
@@ -320,6 +333,13 @@ a:focus {
   background-image: url(../images/next-blue.png);
 }
 
+@media (min-aspect-ratio: 21/9) {
+  .slider_section .img-box img {
+    object-fit: contain; /* Ajusta la imagen para que se vea completa */
+    max-height: 80vh; /* Reduce la altura máxima para evitar desbordes */
+  }
+}
+
 .about_section {
   background-image: url("../images/fondo.png");
   background-attachment: fixed;
@@ -359,6 +379,20 @@ a:focus {
           transform: translate(-50%, -50%) rotate(0deg) scale(1);
   -webkit-animation: rotateAnimation 3s infinite;
           animation: rotateAnimation 3s infinite;
+}
+
+.about_section h2 {
+  color: #fa7900; /* Cambia el color del texto del h2 a #fa7900 */
+  font-size: 36px; /* Ajusta el tamaño del texto si es necesario */
+  font-weight: bold; /* Asegura que el texto sea negrita */
+  margin-bottom: 10px; /* Espaciado inferior */
+}
+
+.about_section p {
+  color: #f5a623; /* Cambia el color del texto del párrafo a #f5a623 */
+  font-size: 16px; /* Ajusta el tamaño del texto si es necesario */
+  line-height: 1.6; /* Espaciado entre líneas */
+  margin-bottom: 20px; /* Espaciado inferior */
 }
 
 @-webkit-keyframes rotateAnimation {
@@ -662,6 +696,28 @@ a:focus {
   text-transform: uppercase;
 }
 
+/* Cambiar el color del h2 en el index */
+.index_section h2,
+.portfolio_section h2,
+.achieve_section h2,
+.client_section h2 {
+  color: #fa7900; /* Cambia el color del texto del h2 a #fa7900 */
+  font-size: 36px; /* Ajusta el tamaño del texto si es necesario */
+  font-weight: bold; /* Asegura que el texto sea negrita */
+  margin-bottom: 10px; /* Espaciado inferior */
+}
+
+/* Cambiar el color de los párrafos en el index */
+.index_section p,
+.portfolio_section p,
+.achieve_section p,
+.client_section p {
+  color: #f5a623; /* Cambia el color del texto del párrafo a #f5a623 */
+  font-size: 16px; /* Ajusta el tamaño del texto si es necesario */
+  line-height: 1.6; /* Espaciado entre líneas */
+  margin-bottom: 20px; /* Espaciado inferior */
+}
+
 /* contact section */
 .contact_section {
   background-image: url(../images/contact-bg.png);
@@ -923,4 +979,294 @@ a:focus {
     font-size: 20px; /* Adjust font size */
   }
 }
+
+/* Estilo del modal */
+.image-modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 10000; /* Asegura que esté por encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.close-modal:hover {
+  color: #ccc;
+}
+
+/* Estilo del botón para volver arriba */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none; /* Oculto por defecto */
+  justify-content: center;
+  align-items: center;
+  box-shadow: 3px 5px 6px rgba(255, 255, 255, 0.3);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999; /* Asegura que el botón esté por encima de otros elementos */
+}
+
+.back-to-top img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.back-to-top:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 40px; /* Aumenta la distancia desde el borde inferior */
+    right: 20px; /* Mantén la distancia desde el borde derecho */
+  }
+}
+
+/* Perfil Section */
+.profile_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente */
+  text-align: center; /* Centra el texto */
+  padding: 50px 20px;
+}
+
+.profile_section .container {
+  padding-left: 10px; /* Reduce el margen izquierdo */
+  padding-right: 10px; /* Reduce el margen derecho */
+  max-width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+.profile_header {
+  margin-bottom: 30px;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.profile_header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2b1e18;
+}
+
+.profile_header p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Centrar la galería */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta el número de columnas automáticamente */
+  gap: 20px; /* Espaciado entre las imágenes */
+  justify-content: center; /* Centra la galería horizontalmente */
+  margin-left: 5px; /* Reduce el margen izquierdo */
+  margin-right: 5px; /* Reduce el margen derecho */
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.101); /* Sombra */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto; /* Permite que el contenedor se ajuste a la altura de la imagen */
+}
+
+.gallery-item img {
+  width: 100%; /* Asegura que las imágenes ocupen todo el ancho del contenedor */
+  height: auto; /* Mantiene la proporción original de las imágenes */
+  object-fit: contain; /* Asegura que las imágenes se ajusten al contenedor sin recortarse */
+  border-radius: 10px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.24); /* Sombra sutil */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Transición para el efecto */
+}
+
+.gallery-item img:hover {
+  transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+  filter: brightness(0.8); /* Oscurece ligeramente la imagen */
+}
+
+.gallery-item:active img {
+  transform: scale(1.2); /* Zoom adicional al hacer clic */
+  filter: brightness(0.6); /* Oscurece más la imagen */
+}
+
+/* Efecto de zoom al hacer clic en la imagen */
+.gallery-img {
+  transition: transform 0.3s ease; /* Transición suave */
+  cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+}
+
+.gallery-img.zoomed {
+  transform: scale(2); /* Aumenta el tamaño de la imagen */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  position: relative; /* Mantiene la posición de la imagen */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1200px) {
+  .gallery {
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas medianas */
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Reduce el tamaño de las columnas en pantallas pequeñas */
+  }
+
+  .profile_section .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .gallery {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .gallery-item img {
+    object-fit: contain; /* Asegura que las imágenes se ajusten correctamente en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: 1fr; /* Una sola columna en pantallas muy pequeñas */
+  }
+
+  .profile_header h1 {
+    font-size: 20px;
+  }
+
+  .profile_header p {
+    font-size: 14px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+/* Matrimonios Section */
+.matrimonios_section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.matrimonios_section .container {
+  padding-left: 10px; /* Reduce el margen izquierdo */
+  padding-right: 10px; /* Reduce el margen derecho */
+  max-width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+.matrimonios_header {
+  margin-bottom: 30px;
+}
+
+.matrimonios-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.matrimonios_header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2b1e18;
+}
+
+.matrimonios_header p {
+  font-size: 16px;
+  color: #555;
+}
+
+.matrimonios_section h2 {
+  color: #fa7900; /* Cambia el color del texto a #fa7900 */
+  font-size: 36px; /* Ajusta el tamaño del texto si es necesario */
+  font-weight: bold; /* Asegura que el texto sea negrita */
+  margin-bottom: 10px; /* Espaciado inferior */
+}
+
+.matrimonios_section p {
+  color: #f5a623; /* Cambia el color del texto a #f5a623 */
+  font-size: 18px; /* Ajusta el tamaño del texto si es necesario */
+  margin-bottom: 20px; /* Espaciado inferior */
+}
+
+.btn-box {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-1 {
+  display: inline-block;
+  padding: 10px 30px;
+  background-color: #2b1e18;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-1:hover {
+  background-color: #f5a623;
+}
+
 /*# sourceMappingURL=style.css.map */

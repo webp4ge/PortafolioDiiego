@@ -88,9 +88,12 @@ header {
 
 /*header section*/
 .hero_area {
-  height: 136vh;
-  background-image: url(../images/hero-bg.png);
-  /* Ensures the background image covers the entire container */
+  height: 100vh; /* Ocupa toda la altura del viewport */
+  background-image: url("../images/hero-bg.png"); /* Ruta de la imagen */
+  background-size: cover; /* Asegura que el fondo cubra todo el contenedor */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que el fondo se repita */
+  background-attachment: fixed; /* Fija el fondo para un efecto de paralaje */
 }
 
 .sub_page .hero_area {
@@ -284,22 +287,20 @@ a:focus {
 }
 
 .slider_section .img-box img {
-  width: 100%; /* La imagen ocupará el 100% del ancho del contenedor */
+  width: 90%; /* Reduce el ancho al 90% del contenedor */
   height: auto; /* Mantiene la proporción de la imagen */
-  object-fit: contain; /* Asegura que la imagen se ajuste al contenedor */
-  max-height: 100vh; /* Limita la altura máxima al 100% del viewport */
+  max-height: 80vh; /* Limita la altura máxima al 80% del viewport */
+  object-fit: contain; /* Asegura que la imagen se ajuste al contenedor sin recortarse */
+  margin: 0 auto; /* Centra la imagen horizontalmente */
+  display: block; /* Asegura que la imagen se comporte como un bloque */
 }
 
 .slider_section .carousel_btn-container {
   width: 60px;
   position: absolute;
   bottom: 175px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   left: 10%;
   z-index: 999;
 }
@@ -337,6 +338,17 @@ a:focus {
   .slider_section .img-box img {
     object-fit: contain; /* Ajusta la imagen para que se vea completa */
     max-height: 80vh; /* Reduce la altura máxima para evitar desbordes */
+  }
+  .hero_area {
+    background-size: contain; /* Asegura que el fondo se ajuste sin recortarse */
+    background-position: center; /* Centra la imagen */
+  }
+}
+
+@media (min-width: 1200px) {
+  .slider_section .img-box img {
+    width: 80%; /* Reduce el ancho al 80% del contenedor en pantallas grandes */
+    max-height: 70vh; /* Limita la altura máxima al 70% del viewport */
   }
 }
 
@@ -446,10 +458,9 @@ a:focus {
 
 .portfolio_section {
   background-image: url("../images/fondo.png");
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
 }
 
 .portfolio_section .portfolio_container {
@@ -485,33 +496,6 @@ a:focus {
   display: flex;
 }
 
-.portfolio_section .portfolio_container .img-box .btn-box a {
-  display: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 0 5px;
-}
-
-.portfolio_section .portfolio_container .img-box .btn-box .btn-1 {
-  background-image: url(../images/link.png);
-}
-
-.portfolio_section .portfolio_container .img-box::before {
-  content: "";
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: rgba(232, 180, 252, 0.11);
-  z-index: 0;
-}
-
 .portfolio_section .portfolio_container .img-box:hover a {
   display: block;
 }
@@ -520,7 +504,6 @@ a:focus {
   display: block;
 }
 
-.portfolio_section .portfolio_container .box-1,
 .portfolio_section .portfolio_container .box-2 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -576,6 +559,84 @@ a:focus {
 
 .portfolio_section .see_btn a:hover {
   background-color: #a83c1bce;
+}
+
+@media (max-width: 768px) {
+  .img-box {
+    flex: 1 1 calc(50% - 20px); /* Cada imagen ocupa la mitad del ancho en pantallas pequeñas */
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .img-box {
+    flex: 1 1 100%; /* Cada imagen ocupa el ancho completo en pantallas muy pequeñas */
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio_container {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas medianas */
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio_container {
+    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio_container {
+    grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+    grid-template-areas:
+      "img1"
+      "img2"
+      "img3"
+      "img4"
+      "img5"
+      "img6"; /* Todas las imágenes en una sola columna */
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Máximo de 5 columnas */
+  gap: 20px; /* Espaciado entre las imágenes */
+  justify-content: center; /* Centra la galería horizontalmente */
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.gallery-item img {
+  width: 100%; /* Asegura que las imágenes ocupen todo el ancho del contenedor */
+  height: auto; /* Mantiene la proporción original de las imágenes */
+  object-fit: cover; /* Asegura que las imágenes se ajusten al contenedor */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Transición para el efecto */
+}
+
+.gallery-item img:hover {
+  transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(5, 1fr); /* Mantén 5 columnas en pantallas pequeñas */
+    gap: 10px; /* Reduce el espaciado entre las imágenes */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: repeat(5, 1fr); /* Mantén 5 columnas en pantallas muy pequeñas */
+    gap: 5px; /* Reduce aún más el espaciado */
+  }
 }
 
 .achieve_section .achieve_container {
@@ -800,9 +861,15 @@ a:focus {
 
 /* end contact section */
 .info_section {
-  background-color: #38180981;
-  color: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  background-color: rgba(56, 24, 9, 0.5); /* Fondo semitransparente */
+  color: #ffffff; /* Color del texto */
+  font-family: 'Poppins', sans-serif; /* Fuente consistente */
+  text-align: center; /* Centra el texto horizontalmente */
+  padding: 10px 20px; /* Espaciado interno */
+  display: flex; /* Usa flexbox para centrar */
+  justify-content: auto; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  flex-direction: column; /* Asegura que los elementos estén en columna */
 }
 
 .info_section .info_container {
@@ -845,27 +912,30 @@ a:focus {
 
 /* footer section*/
 .footer_section {
-  background-color: #df7e2462;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  position: relative;
-  font-family: 'Poppins', sans-serif;
+  background-color: #222; /* Color de fondo del footer */
+  color: #fff; /* Color del texto */
+  text-align: center; /* Centra el texto horizontalmente */
+  padding: 10px 0; /* Espaciado interno */
+  display: flex; /* Usa flexbox para alinear el contenido */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
 }
 
 .footer_section p {
-  color: #ffffff;
-  margin: 0 auto;
-  text-align: center;
-  padding: 20px 0;
-  width: 55%;
+  margin: 0; /* Elimina los márgenes para que el texto no se divida en varias líneas */
+  font-size: 14px; /* Ajusta el tamaño del texto */
+  line-height: 1.5; /* Ajusta la altura de línea */
+  display: inline-block; /* Asegura que el texto se comporte como un bloque en línea */
 }
 
 .footer_section a {
-  color: #ffffff;
+  color: #fa7900; /* Color del enlace */
+  text-decoration: none; /* Elimina el subrayado */
+  margin-left: 5px; /* Espaciado entre el texto y el enlace */
+}
+
+.footer_section a:hover {
+  text-decoration: underline; /* Agrega subrayado al pasar el mouse */
 }
 
 /* Pop-up Styles */
@@ -1054,156 +1124,19 @@ a:focus {
   }
 }
 
-/* Perfil Section */
-.profile_section {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra horizontalmente */
-  text-align: center; /* Centra el texto */
-  padding: 50px 20px;
-}
-
-.profile_section .container {
-  padding-left: 10px; /* Reduce el margen izquierdo */
-  padding-right: 10px; /* Reduce el margen derecho */
-  max-width: 100%; /* Asegura que ocupe todo el ancho disponible */
-}
-
-.profile_header {
-  margin-bottom: 30px;
-}
-
-.profile-pic {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 15px;
-}
-
-.profile_header h1 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #2b1e18;
-}
-
-.profile_header p {
-  font-size: 16px;
-  color: #555;
-}
-
-/* Centrar la galería */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta el número de columnas automáticamente */
-  gap: 20px; /* Espaciado entre las imágenes */
-  justify-content: center; /* Centra la galería horizontalmente */
-  margin-left: 5px; /* Reduce el margen izquierdo */
-  margin-right: 5px; /* Reduce el margen derecho */
-}
-
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0px; /* Esquinas redondeadas */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.101); /* Sombra */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: auto; /* Permite que el contenedor se ajuste a la altura de la imagen */
-}
-
-.gallery-item img {
-  width: 100%; /* Asegura que las imágenes ocupen todo el ancho del contenedor */
-  height: auto; /* Mantiene la proporción original de las imágenes */
-  object-fit: contain; /* Asegura que las imágenes se ajusten al contenedor sin recortarse */
-  border-radius: 10px; /* Esquinas redondeadas */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.24); /* Sombra sutil */
-  transition: transform 0.3s ease, filter 0.3s ease; /* Transición para el efecto */
-}
-
-.gallery-item img:hover {
-  transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
-  filter: brightness(0.8); /* Oscurece ligeramente la imagen */
-}
-
-.gallery-item:active img {
-  transform: scale(1.2); /* Zoom adicional al hacer clic */
-  filter: brightness(0.6); /* Oscurece más la imagen */
-}
-
-/* Efecto de zoom al hacer clic en la imagen */
-.gallery-img {
-  transition: transform 0.3s ease; /* Transición suave */
-  cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
-}
-
-.gallery-img.zoomed {
-  transform: scale(2); /* Aumenta el tamaño de la imagen */
-  z-index: 1000; /* Asegura que esté por encima de otros elementos */
-  position: relative; /* Mantiene la posición de la imagen */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 1200px) {
-  .gallery {
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas medianas */
-  }
-}
-
-@media (max-width: 768px) {
-  .gallery {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Reduce el tamaño de las columnas en pantallas pequeñas */
-  }
-
-  .profile_section .container {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-
-  .gallery {
-    margin-left: 2px;
-    margin-right: 2px;
-  }
-
-  .gallery-item img {
-    object-fit: contain; /* Asegura que las imágenes se ajusten correctamente en pantallas pequeñas */
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery {
-    grid-template-columns: 1fr; /* Una sola columna en pantallas muy pequeñas */
-  }
-
-  .profile_header h1 {
-    font-size: 20px;
-  }
-
-  .profile_header p {
-    font-size: 14px;
-  }
-
-  .gallery {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  }
-}
-
 /* Matrimonios Section */
 .matrimonios_section {
-  padding: 50px 20px;
-  text-align: center;
+  padding: 50px 20px; /* Espaciado interno */
+  background-image: url("../images/fondo.png"); /* Ruta de la imagen de fondo */
+  background-size: cover; /* Asegura que el fondo cubra todo el contenedor */
+  background-position: center; /* Centra la imagen de fondo */
+  background-repeat: no-repeat; /* Evita que el fondo se repita */
+  text-align: center; /* Centra el texto */
+  color: #fff; /* Cambia el color del texto para que sea legible sobre el fondo */
+  display: flex; /* Usa flexbox para centrar */
+  flex-direction: column; /* Asegura que los elementos estén en columna */
+  justify-content: space-between; /* Espacia los elementos dentro de la sección */
+  align-items: center; /* Centra los elementos horizontalmente */
 }
 
 .matrimonios_section .container {
@@ -1235,6 +1168,50 @@ a:focus {
   color: #555;
 }
 
+/* Centrar la galería */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Máximo de 5 columnas */
+  gap: 20px; /* Espaciado entre las imágenes */
+  justify-content: center; /* Centra la galería horizontalmente */
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 6px rgba(24, 24, 24, 0.719); /* Sombra */
+}
+
+.gallery-item img {
+  width: 100%; /* Asegura que las imágenes ocupen todo el ancho del contenedor */
+  height: auto; /* Mantiene la proporción original de las imágenes */
+  object-fit: cover; /* Asegura que las imágenes se ajusten al contenedor */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Transición para el efecto */
+}
+
+.gallery-item img:hover {
+  transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+}
+
+.gallery-item:active img {
+  transform: scale(1.2); /* Zoom adicional al hacer clic */
+  filter: brightness(0.6); /* Oscurece más la imagen */
+}
+
+/* Efecto de zoom al hacer clic en la imagen */
+.gallery-img {
+  transition: transform 0.3s ease; /* Transición suave */
+  cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+}
+
+.gallery-img.zoomed {
+  transform: scale(2); /* Aumenta el tamaño de la imagen */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  position: relative; /* Mantiene la posición de la imagen */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
+}
+
 .matrimonios_section h2 {
   color: #fa7900; /* Cambia el color del texto a #fa7900 */
   font-size: 36px; /* Ajusta el tamaño del texto si es necesario */
@@ -1246,6 +1223,27 @@ a:focus {
   color: #f5a623; /* Cambia el color del texto a #f5a623 */
   font-size: 18px; /* Ajusta el tamaño del texto si es necesario */
   margin-bottom: 20px; /* Espaciado inferior */
+}
+
+.matrimonios_section .see_btn {
+  margin-top: 30px; /* Espaciado superior */
+}
+
+.matrimonios_section .see_btn a {
+  display: inline-block;
+  padding: 12px 60px;
+  background-color: #fa7900; /* Color de fondo */
+  color: #ffffff; /* Color del texto */
+  border-radius: 10px; /* Esquinas redondeadas */
+  text-transform: uppercase;
+  text-decoration: none; /* Elimina el subrayado */
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.matrimonios_section .see_btn a:hover {
+  background-color: #a83c1bce; /* Color de fondo al pasar el mouse */
 }
 
 .btn-box {
@@ -1267,6 +1265,171 @@ a:focus {
 
 .btn-1:hover {
   background-color: #f5a623;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1200px) {
+  .gallery {
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas medianas */
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Reduce el tamaño de las columnas en pantallas pequeñas */
+  }
+
+  .matrimonios_section .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .gallery {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .gallery-item img {
+    object-fit: contain; /* Asegura que las imágenes se ajusten correctamente en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: 1fr; /* Una sola columna en pantallas muy pequeñas */
+  }
+
+  .matrimonios_header h1 {
+    font-size: 20px;
+  }
+
+  .matrimonios_header p {
+    font-size: 14px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .matrimonios_section {
+    background-size: contain; /* Asegura que toda la imagen sea visible */
+    background-position: top; /* Ajusta la posición del fondo */
+  }
+}
+
+/* Contenedor del efecto */
+.custom-effect-container {
+  display: flex; /* Cambia la disposición a una fila */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+  gap: 20px; /* Espaciado entre los elementos */
+  flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente fila si no caben */
+}
+
+/* Efecto principal */
+.custom-effect {
+  position: relative;
+  width: 300px; /* Ajusta el tamaño según sea necesario */
+  height: 400px; /* Ajusta el tamaño según sea necesario */
+  perspective: 1000px; /* Agrega perspectiva para el efecto de inclinación */
+  overflow: hidden;
+  border-radius: 5px; /* Esquinas redondeadas */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra */
+  transition: transform 0.3s ease;
+}
+
+.custom-effect:hover {
+  transform: perspective(350px) rotateX(10deg) translateY(-5%) translateZ(0); /* Inclinación hacia atrás al pasar el mouse */
+}
+
+/* Imagen principal */
+.custom-effect .main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.custom-effect:hover .main-image {
+  transform: scale(1.1); /* Zoom al pasar el mouse */
+  filter: brightness(0.8); /* Oscurece ligeramente la imagen */
+}
+
+/* Superposición (overlay) */
+.custom-effect .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.247), rgba(0, 0, 0, 0.692)); /* Degradado */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Evita que el mouse interactúe con la superposición */
+  opacity: 0; /* Oculta el overlay por defecto */
+  z-index: 2; /* Asegura que el overlay esté por encima de la imagen principal */
+  transition: opacity 0.5s ease; /* Transición suave */
+}
+
+.custom-effect:hover .overlay {
+  opacity: 1; /* Muestra el overlay al pasar el mouse */
+  position: absolute;
+  pointer-events: auto; /* Permite la interacción del mouse */
+}
+
+/* Imagen superpuesta */
+.custom-effect .overlay-image {
+  width: 100%; /* Tamaño de la imagen superpuesta */
+  transform: translateY(300%); /* Posición inicial desplazada en el eje Y */
+  opacity: 0; /* Oculta la imagen superpuesta por defecto */
+  transition: transform 0.3s ease, opacity 0.5s ease; /* Transición suave */
+  box-shadow: 0px 20px 15px rgb(255, 255, 255); /* Sombra blanca */
+}
+
+.custom-effect:hover .overlay-image {
+  transform: translateY(0%) scale(1.2); /* Desliza la imagen superpuesta hacia arriba y aplica zoom */
+  opacity: 1; /* Muestra la imagen superpuesta al pasar el mouse */
+}
+
+.custom-effect .overlay a {
+  display: flex; /* Asegura que el enlace se comporte como un contenedor flexible */
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Asegura que el enlace cubra toda la imagen superpuesta */
+  height: 100%;
+  text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.custom-effect .overlay a .overlay-image {
+  width: 100%; /* Mantiene el tamaño de la imagen superpuesta */
+  transition: transform 0.3s ease, opacity 0.5s ease; /* Transición suave */
+}
+
+@media (max-width: 768px) {
+  .custom-effect-container {
+    flex-direction: column; /* Cambia a columnas en pantallas pequeñas */
+    align-items: center; /* Centra los elementos */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero_area {
+    background-size: cover; /* Asegura que el fondo cubra todo el contenedor */
+    background-position: top; /* Ajusta la posición del fondo */
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
